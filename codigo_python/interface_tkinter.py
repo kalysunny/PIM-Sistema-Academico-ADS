@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 def ler_dados_alunos():
-    """Lê o arquivo alunos.txt e retorna uma lista de dicionários."""
     alunos = []
     try:
         with open("alunos.txt", "r", encoding="utf-8") as arquivo:
@@ -27,12 +26,11 @@ def ler_dados_alunos():
                         aluno = {}
         return alunos
     except FileNotFoundError:
-        messagebox.showerror("Erro", "Arquivo 'alunos.txt' não encontrado.")
+        messagebox.showerror("Erro", 'O arquivo "alunos.txt" não foi encontrado.')
         return []
 
 
 def ler_notas():
-    """Lê o arquivo notas.txt e retorna um dicionário com matrícula como chave."""
     notas = {}
     try:
         with open("notas.txt", "r", encoding="utf-8") as arquivo:
@@ -50,27 +48,25 @@ def ler_notas():
                     notas[matricula]["PIM"] = float(linha.split(": ")[1])
         return notas
     except FileNotFoundError:
-        messagebox.showerror("Erro", "Arquivo 'notas.txt' não encontrado.")
+        messagebox.showerror("Erro", 'O arquivo "notas.txt" não foi encontrado.')
         return {}
 
 
 def calcular_media(np1, np2, pim):
-    """Calcula a média ponderada e retorna o valor e a situação."""
     media = ((np1 * 4) + (np2 * 4) + (pim * 2)) / 10
-    situacao = "Aprovado ✅" if media >= 5 else "Reprovado ❌"
+    situacao = "Aprovado." if media >= 5 else "Reprovado."
     return round(media, 2), situacao
 
 
 def exibir_dados():
-    """Atualiza a tabela com os dados dos alunos e suas notas."""
     alunos = ler_dados_alunos()
     notas = ler_notas()
 
-    # Limpa a tabela
+   
     for item in tree.get_children():
         tree.delete(item)
 
-    # Popula a tabela com os dados
+    
     for aluno in alunos:
         matricula = aluno.get("matricula", "")
         dados_notas = notas.get(matricula, {})
@@ -94,7 +90,7 @@ def exibir_dados():
         ))
 
 
-# === INTERFACE GRÁFICA ===
+#TKINTER
 janela = tk.Tk()
 janela.title("Sistema Acadêmico — UNIKRAG")
 janela.geometry("850x400")
@@ -108,7 +104,7 @@ titulo = tk.Label(
 )
 titulo.pack(pady=10)
 
-# Criando tabela
+
 colunas = ("Matrícula", "Nome", "NP1", "NP2", "PIM", "Média", "Situação")
 tree = ttk.Treeview(janela, columns=colunas, show="headings")
 
@@ -118,7 +114,7 @@ for coluna in colunas:
 
 tree.pack(padx=10, pady=10, fill="both", expand=True)
 
-# Botão para atualizar dados
+
 botao = tk.Button(
     janela, 
     text="🔄 Atualizar Dados", 
@@ -131,5 +127,6 @@ botao.pack(pady=10)
 
 # Carrega dados automaticamente
 exibir_dados()
+
 
 janela.mainloop()
