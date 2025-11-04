@@ -1,0 +1,8 @@
+=== ALUNO CADASTRADO ===
+Matricula: 1
+Nome: Ane Gabriella
+CPF: 123456789
+RG: 123456
+Sexo: F
+Data de Nascimento: 01/01/2001
+------------------------
