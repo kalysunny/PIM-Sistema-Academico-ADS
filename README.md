@@ -30,8 +30,8 @@ Além disso, o sistema inclui um **chatbot de IA** (em fase conceitual) para aux
 
 ## Tecnologias Utilizadas
 
-- **C (ANSI C)** — manipulação de dados e gravação em arquivos `.txt`
-- **Python 3.x** — interface e cálculos
+- **C** — manipulação de dados e gravação em arquivos `.txt`
+- **Python** — interface e cálculos
 - **Tkinter** — biblioteca padrão de GUI do Python
 - **GitHub** — controle de versão e colaboração
 - **Figma / Canva** — prototipagem das telas
